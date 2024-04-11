@@ -8,18 +8,20 @@ const auth = express.Router();
 // Login route
 auth.post("/login", async (req, res) => {
   const { username, password } = req.body;
-
+  console.log(`Hello`, req.body);
+  
   try {
     const user = await findUserByUsername(username);
-
+    
     if (!user) return res.status(401).json({ message: "Invalid credentials" });
-
+    
     const validPassword = await bcrypt.compare(password, user.password_hash);
-
+    
     if (!validPassword)
-      return res.status(401).json({ message: "Invalid credentials" });
-
-    const token = generateToken(user);
+    return res.status(401).json({ message: "Invalid credentials" });
+  
+  const token = generateToken(user);
+  
 
     res.status(200).json({
       message: "Logged in successfully",

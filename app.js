@@ -4,7 +4,9 @@ const express = require("express");
 const cron = require("node-cron");
 const cookieParser = require("cookie-parser");
 
+// Controllers
 const authController = require("./controllers/authController");
+const vehicleController = require("./controllers/vehicleController")
 
 // CONFIGURATION
 const app = express();
@@ -28,6 +30,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use("/api/auth", authController);
+app.use("/api/vehicles", vehicleController)
 
 // ROUTES
 app.get("/", (_req, res) => {

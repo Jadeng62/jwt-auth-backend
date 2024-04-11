@@ -1,3 +1,4 @@
+const user = require("../controllers/userController");
 const db = require("../db/dbConfig");
 /**
  * Finds a user by their username.
@@ -5,11 +6,12 @@ const db = require("../db/dbConfig");
  * @returns {Promise<object|null>} The user object if found, otherwise null.
  */
 const findUserByUsername = async (username) => {
+  console.log(username);
   try {
     const query = "SELECT * FROM users WHERE username = $1";
 
     const user = await db.oneOrNone(query, username);
-
+ console.log(user);
     return user;
   } catch (error) {
     console.error("Error finding user by username:", error);
