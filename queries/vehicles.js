@@ -21,8 +21,8 @@ const getOneVehicleDetail = async (vehicle_id) => {
 
 const createVehicle = async (vehicle) => {
     try {
-        const {user_id, make, model, year, vin, engine, horsepower, price, exterior_color, interior_color, custom, torque} = vehicle
-        const newVehicle = await db.one('INSERT INTO vehicles (user_id, make, model, year, vin, engine, horsepower, price, exterior_color, interior_color, custom, torque, created_at) VALUES ($1, $2, $3, $4 , $5 ,$6, $7, $8, $9, $10, $11 , $12, $13) RETURNING * ', [user_id, make, model, year, vin, engine, horsepower, price, exterior_color, interior_color, custom, torque, "NOW()"])
+        const {user_id, make, model, year, vin, engine, horsepower, price, exterior_color, interior_color, custom, torque, img} = vehicle
+        const newVehicle = await db.one('INSERT INTO vehicles (user_id, make, model, year, vin, engine, horsepower, price, exterior_color, interior_color, custom, torque, img, created_at) VALUES ($1, $2, $3, $4 , $5 ,$6, $7, $8, $9, $10, $11 , $12, $13, $14) RETURNING * ', [user_id, make, model, year, vin, engine, horsepower, price, exterior_color, interior_color, custom, torque, img,"NOW()"])
 
         console.log("Query for new Vehicle:",newVehicle)
 
