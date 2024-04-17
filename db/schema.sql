@@ -31,6 +31,7 @@ CREATE TABLE vehicles (
     interior_color VARCHAR(255),
     custom TEXT,
     torque INTEGER,
+    img VARCHAR(255) DEFAULT 'https://klar-rent.com/uploads/images/cars/img-placeholder.jpg',
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );

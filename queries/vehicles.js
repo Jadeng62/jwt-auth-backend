@@ -35,4 +35,14 @@ const createVehicle = async (vehicle) => {
     }
 }
 
-module.exports = {getAllUserVehicles, getOneVehicleDetail, createVehicle};
+const removeVehicle = async (vehicle_id) => {
+    try {
+        const deletedCar = await db.one("DELETE FROM vehicles WHERE vehicle_id =$1", vehicle_id)
+        return deletedCar
+    } catch (error) {
+        console.error({error: error})
+        return error
+    }
+}
+
+module.exports = {getAllUserVehicles, getOneVehicleDetail, createVehicle, removeVehicle};
