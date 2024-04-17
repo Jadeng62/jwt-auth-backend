@@ -24,6 +24,13 @@ CREATE TABLE vehicles (
     model VARCHAR(50) NOT NULL,
     year INT NOT NULL,
     vin VARCHAR(17) UNIQUE NOT NULL,
+    engine VARCHAR(255),
+    horsepower INTEGER,
+    price NUMERIC,
+    exterior_color VARCHAR(255),
+    interior_color VARCHAR(255),
+    custom TEXT,
+    torque INTEGER,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
